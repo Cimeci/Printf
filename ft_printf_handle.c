@@ -71,7 +71,7 @@ int	ft_handle_string(va_list ap)
 	s = va_arg(ap, char *);
 	if (s)
 		count += ft_putstr_fd(s, 1);
-	else
+	else		
 		count += ft_putstr_fd("(null)", 1);
 	return (count);
 }

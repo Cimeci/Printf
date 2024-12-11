@@ -23,6 +23,20 @@ int	ft_handle_char(va_list ap)
 	return (count);
 }
 
+int ft_handle_fd_string(va_list ap)
+{
+	char	*s;
+	int		count;
+
+	count = 0;
+	s = va_arg(ap, char *);
+	if (s)
+		count += ft_putstr_fd(s, 2);
+	else
+		count += ft_putstr_fd("(null)", 1);
+	return (count);
+}
+
 int	ft_handle_conversion(const char *fmt, va_list ap)
 {
 	int	size;
@@ -45,6 +59,8 @@ int	ft_handle_conversion(const char *fmt, va_list ap)
 		size += ft_handle_hex(ap, *fmt);
 	else if (*fmt == 'p')
 		size += ft_handle_pointer(ap);
+	else if (*fmt == 'S')
+		size += ft_handle_fd_string(ap);
 	return (size);
 }
 
